@@ -25,7 +25,7 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
         <p>testing update...</p>
-        <p>this is second update</p>
+        <p>this is third update.</p>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
