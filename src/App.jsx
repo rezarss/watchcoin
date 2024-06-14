@@ -1,10 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [data, setdata] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      const res = await axios.get('https://dummyapi.online/api/movies')
+      setdata(res.data)
+    }
+    getData()
+  }, [])
+
+  console.log(data)
 
   return (
     <>
@@ -24,8 +36,13 @@ function App() {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
-        <p>testing update...</p>
-        <p>this is forth update.</p> 
+        {data.length && 
+          data.map(movie => {
+            return(
+              <p>{movie.movie}</p>
+            )
+          })
+        }
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
